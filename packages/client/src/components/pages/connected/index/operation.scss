@@ -7,7 +7,7 @@
   justify-content: space-between;
   color: $palette-dark-300;
 
-  border-top: 1px solid rgba(black, 0.05);
+  border-bottom: 1px solid rgba(black, 0.05);
 
   &--dragging {
     position: fixed;
