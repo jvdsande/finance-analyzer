@@ -1,6 +1,6 @@
 import { Computed, Types, Scope } from '@harmonyjs/persistence'
 
-import moment from 'moment'
+import moment from 'moment-timezone'
 
 const authenticatedScope : Scope = async ({ context }) => {
   if (context!.authentication.get() && context!.authentication.get().account) {
@@ -58,9 +58,9 @@ export default <Computed> {
         },
       },
       async resolve({ args, resolvers: { Account, Operation, Category: CategoryResolver }, context }) {
-        const upperBound = moment(args.month).endOf('month')
-        const lowerBound = moment(args.month).startOf('year')
-        const monthBound = moment(args.month).startOf('month')
+        const upperBound = moment(args.month).tz('Europe/Paris').endOf('month')
+        const lowerBound = moment(args.month).tz('Europe/Paris').startOf('year')
+        const monthBound = moment(args.month).tz('Europe/Paris').startOf('month')
 
         const account : any = await Account.read({ filter: { _id: context.authentication.get().account } })
         const operations : any[] = await Operation.readMany({
@@ -121,7 +121,7 @@ export default <Computed> {
         }
 
         operations.forEach((operation) => {
-          const isMonthly = moment(operation.date).isSameOrAfter(monthBound)
+          const isMonthly = moment(operation.date).tz('Europe/Paris').isSameOrAfter(monthBound)
 
           // Add yearly cumulative value and monthly value
           if (operation.type === 'income') {
@@ -195,9 +195,9 @@ export default <Computed> {
         yearlyCumulativeGain: Types.Float,
       },
       async resolve({ args, resolvers: { Account, Operation }, context }) {
-        const upperBound = moment(args.week).endOf('week')
-        const lowerBound = moment(args.week).startOf('year')
-        const weekBound = moment(args.week).startOf('week')
+        const upperBound = moment(args.week).tz('Europe/Paris').endOf('week')
+        const lowerBound = moment(args.week).tz('Europe/Paris').startOf('year')
+        const weekBound = moment(args.week).tz('Europe/Paris').startOf('week')
 
         const account : any = await Account.read({ filter: { _id: context.authentication.get().account } })
         const operations : any[] = await Operation.readMany({
@@ -223,7 +223,7 @@ export default <Computed> {
         }
 
         operations.forEach((operation) => {
-          const isWeekly = moment(operation.date).isSameOrAfter(weekBound)
+          const isWeekly = moment(operation.date).tz('Europe/Paris').isSameOrAfter(weekBound)
 
           // Add yearly cumulative value and monthly value
           if (operation.type === 'income') {
@@ -259,7 +259,7 @@ export default <Computed> {
         yearlyCumulativeGain: Types.Float,
       },
       async resolve({ args, resolvers: { Account, Operation }, context }) {
-        const upperBound = moment(args.day).endOf('day')
+        const upperBound = moment(args.day).tz('Europe/Paris').endOf('day')
 
         const account : any = await Account.read({ filter: { _id: context.authentication.get().account } })
         const operations : any[] = await Operation.readMany({
