@@ -180,7 +180,7 @@
   }
 
   &__loading-icon {
-    animation: spin linear 2s;
+    animation: spin linear 2s infinite;
 
     @keyframes spin {
       0% {

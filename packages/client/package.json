@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "mixt:start": "docusaurus start",
+    "mixt:start": "docusaurus start --no-open",
     "mixt:build": "docusaurus build",
-    "mixt:watch": "docusaurus start"
+    "mixt:watch": "docusaurus start --no-open"
   },
   "dependencies": {
     "@docusaurus/core": "^2.0.0-alpha.54",
