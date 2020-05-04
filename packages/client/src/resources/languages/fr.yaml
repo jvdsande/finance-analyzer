@@ -1,0 +1,114 @@
+pages:
+  disconnected:
+    login:
+      title: Bienvenue !
+      description: Connectez-vous pour éditer vos articles.
+
+      form:
+        email:
+          placeholder: Email
+        password:
+          placeholder: Mot de passe
+
+        submit: Connexion
+
+      errors:
+        user_not_found: Email ou mot de passe incorrect
+        wrong_credentials: Email ou mot de passe incorrect
+
+  connected:
+    dashboard:
+      title: Mon compte
+
+      hello: Bonjour,
+      new:
+        label: Nouvel article
+        language:
+          title: Nouvel article
+          content: Veuillez choisir la langue de votre article
+        title:
+          title: Nouvel article
+          content: Veuillez choisir un titre pour votre article
+      search:
+        placeholder: Rechercher un article
+      hidePublished: Cacher les articles publiés
+
+      article:
+        actions:
+          edit: Éditer
+          preview: Prévisualiser
+        published:
+          true: Publié
+          false: Non publié
+
+    edit:
+      title: Éditeur
+      saving: En cours d'enregistrement
+      saved: Toutes les modifications ont été enregistrées
+      published:
+        true: Publié
+        false: Non publié
+      publish:
+        update:
+          success: Article public mis à jour avec succès !
+          error: Une erreur est survenue lors de la publication de l'article
+        toggle:
+          success: Article publié avec succès !
+          down: L'article n'est plus lisible sur Insane
+          error: Une erreur est survenue lors de la publication de l'article
+        index:
+          error: Une erreur est survenue lors de l'indexation de l'article pour la recherche
+      titlePlaceholder: Titre de l'article
+      introductionPlaceholder: Présentation de l'article
+      articlePlaceholder: Contenu de l'article
+      topics:
+        story: Témoignages
+        art: Culture
+        action: Action
+        professional: Paroles de pro
+        how-to: Comment faire...
+        misc: Divers
+      image:
+        placeholder: Choisissez une image
+        title: Image de l'article
+      tags:
+        placeholder: Tags de l'article
+      toolbar:
+        bold: Gras
+        italic: Italique
+        underline: Sousligné
+        heading: Titre
+        subheading: Sous-titre
+        quote: Citation
+        list:
+          ordered: Liste ordonnée
+          unordered: Liste à point
+        link: Lien hypertexte
+        locale: Langue
+
+
+shared:
+  password:
+    title: Première connexion
+    description: Vueillez choisir un mot de passe sécurisé avant d'accéder au panneau d'administration
+
+    form:
+      password:
+        placeholder: Mot de passe
+      passwordConfirm:
+        placeholder: Mot de passe (confirmation)
+
+      submit: Enregistrer le mot de passe
+
+    errors:
+      password_too_short: Mot de passe trop court
+      password_mismatch: Les deux mots de passe ne correspondent pas
+
+  semantics:
+    prompt:
+      check:
+        cancel: Non
+        confirm: Oui
+      input:
+        cancel: Annuler
+        confirm: Valider

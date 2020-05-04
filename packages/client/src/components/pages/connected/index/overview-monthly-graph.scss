@@ -1,0 +1,89 @@
+@import "~style/_variables";
+
+.overview-monthly-graph {
+  height: 100%;
+  overflow: auto;
+  text-align: left;
+  position: relative;
+
+  &__close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 1rem 2rem;
+    overflow: hidden;
+
+    &:hover {
+      background-color: rgba(black, 0.03);
+    }
+  }
+
+  &__title {
+    text-align: center;
+    font-weight: 600;
+  }
+
+  &__month-button {
+    padding: 1rem;
+    margin: 0 1rem;
+
+    &:hover {
+      background-color: rgba(black, 0.03);
+    }
+  }
+
+  &__content {
+    height: calc(100% - 4rem);
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+
+    svg {
+      width: calc(50vh - 7rem);
+      height: calc(50vh - 7rem);
+    }
+  }
+
+  &__pie-wrapper {
+    width: calc(50vh - 3rem);
+    height: calc(50vh - 3rem);
+
+    &--main {
+      width: calc(50vh - 2rem);
+      height: calc(50vh - 2rem);
+    }
+  }
+
+  &__pie-title {
+    flex: none;
+    position: relative;
+    top: 3rem;
+    font-weight: 600;
+    opacity: 0.7;
+  }
+
+  &__pie-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 33%;
+    height: calc(50vh - 7rem);
+    flex: none;
+
+    &--main {
+      min-width: 50%;
+    }
+  }
+
+  &__tooltip {
+    padding: 0.5rem;
+    border: 1px solid rgba(black, 0.1);
+    background-color: white;
+    border-radius: 0.25rem;
+    box-shadow: 0.25rem 0.25rem 0 0 rgba(black, 0.1);
+    z-index: 1000;
+    position: relative;
+  }
+}

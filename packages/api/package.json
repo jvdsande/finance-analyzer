@@ -1,0 +1,30 @@
+{
+  "name": "finance-analyzer-api",
+  "version": "0.1.0",
+  "description": "API Server for the Finance Analyzer tool",
+  "author": "Jérémie van der Sande",
+  "mixt": {
+    "dist": "./pkg"
+  },
+  "@pika/pack": {
+    "pipeline": [
+      [
+        "@pika/plugin-ts-standard-pkg"
+      ],
+      [
+        "@harmonyjs/pika-plugin-ts-resolve-imports"
+      ],
+      [
+        "@pika/plugin-build-node"
+      ]
+    ]
+  },
+  "scripts": {
+    "mixt:start": "node ./pkg/dist-node/index.js",
+    "mixt:build": "pika build",
+    "mixt:watch": "nodemon -e ts,js,tsx,jsx,json,yml --watch src --exec \"npm run mixt:build && npm run mixt:start\""
+  },
+  "devDependencies": {
+    "typescript": "^3.8.3"
+  }
+}

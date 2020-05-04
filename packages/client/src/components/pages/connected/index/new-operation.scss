@@ -1,0 +1,137 @@
+@import "~style/variables";
+
+.new-operation {
+  position: relative;
+  z-index: 100;
+
+  &__container {
+    padding: 0.75rem 0.5rem 0.3rem;
+    margin-bottom: 0.45rem;
+    display: flex;
+    background-color: white;
+    height: calc(100% - 0.45rem);
+  }
+
+  &__amount {
+    @include input();
+    width: auto;
+    min-width: 0;
+    background-color: white;
+    flex: 1;
+  }
+
+  &__type {
+    flex: 1;
+    margin-left: 0.5rem;
+
+    &__control {
+      border-radius: 0.25rem !important;
+      border-color: rgba(#888888, 0.25) !important;
+    }
+  }
+
+  &__category {
+    flex: 1;
+    margin-left: 0.5rem;
+
+    &__control {
+      border-radius: 0.25rem !important;
+      border-color: rgba(#888888, 0.25) !important;
+    }
+  }
+
+  &__type, &__category {
+    &__control {
+      &--is-focused {
+        box-shadow: none !important;
+        border-color: rgba(#888888, 0.25) !important;
+      }
+    }
+  }
+
+  &__add {
+    @include button();
+
+    height: calc(100% - 0.5rem);
+
+    margin-left: 0.5rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+
+    padding: 0 0.5rem;
+
+    background-color: $palette-main-500;
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 80%;
+
+    &:hover {
+      background-color: $palette-main-700;
+    }
+    &:active {
+      background-color: $palette-main-900;
+      color: white;
+    }
+  }
+
+  &__date {
+    @include button();
+
+    height: calc(100% - 0.5rem);
+
+    margin-left: 0.5rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+
+    padding: 0 0.5rem;
+
+    background-color: $palette-dark-500;
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 80%;
+
+    &:hover {
+      background-color: $palette-dark-700;
+    }
+    &:active {
+      background-color: $palette-dark-900;
+      color: white;
+    }
+  }
+
+  &__insert-date {
+    background-color: white;
+    border-bottom: 1px solid rgba(black, 0.05);
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    position: absolute;
+    z-index: -1;
+
+    bottom: 0;
+    height: 3rem;
+    left: 0;
+    right: 0;
+
+    transition: bottom .2s;
+
+    &--open {
+      bottom: -3rem;
+    }
+
+    & input {
+      @include input();
+      margin: -0.5rem 1rem 0;
+    }
+  }
+}

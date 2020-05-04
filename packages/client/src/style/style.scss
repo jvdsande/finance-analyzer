@@ -1,0 +1,22 @@
+@import "~destyle.css";
+@import "variables.scss";
+
+html {
+  overflow: auto !important;
+}
+
+body {
+  font-family: $sans-serif;
+  font-size: 1rem !important;
+  -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
+}
+
+svg {
+  height: 1em;
+  width: 1em;
+}
+
+* {
+  box-sizing: border-box;
+}

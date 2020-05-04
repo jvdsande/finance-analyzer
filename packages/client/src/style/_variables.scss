@@ -1,0 +1,179 @@
+$palette-main:
+        rgb(224, 239, 248)
+        rgb(179, 214, 237)
+        rgb(128, 187, 225)
+        rgb(77, 160, 212)
+        rgb(38, 139, 203)
+        rgb(0, 119, 194)
+        rgb(0, 111, 188)
+        rgb(0, 100, 180)
+        rgb(0, 90, 172)
+        rgb(0, 71, 159)
+        rgb(201, 221, 255)
+        rgb(150, 190, 255)
+        rgb(99, 158, 255)
+        rgb(74, 142, 255)
+;
+
+$palette-main-50: nth($palette-main, 1);
+$palette-main-100: nth($palette-main, 2);
+$palette-main-200: nth($palette-main, 3);
+$palette-main-300: nth($palette-main, 4);
+$palette-main-400: nth($palette-main, 5);
+$palette-main-500: nth($palette-main, 6);
+$palette-main-600: nth($palette-main, 7);
+$palette-main-700: nth($palette-main, 8);
+$palette-main-800: nth($palette-main, 9);
+$palette-main-900: nth($palette-main, 10);
+$palette-main-A100: nth($palette-main, 11);
+$palette-main-A200: nth($palette-main, 12);
+$palette-main-A400: nth($palette-main, 13);
+$palette-main-A700: nth($palette-main, 14);
+
+$palette-error:
+        rgb(248, 230, 227)
+        rgb(236, 192, 186)
+        rgb(224, 150, 140)
+        rgb(212, 107, 93)
+        rgb(202, 76, 59)
+        rgb(193, 44, 24)
+        rgb(187, 39, 21)
+        rgb(179, 33, 17)
+        rgb(171, 27, 14)
+        rgb(158, 16, 8)
+        rgb(255, 204, 202)
+        rgb(255, 155, 151)
+        rgb(255, 106, 100)
+        rgb(255, 81, 75)
+;
+
+$palette-error-50: nth($palette-error, 1);
+$palette-error-100: nth($palette-error, 2);
+$palette-error-200: nth($palette-error, 3);
+$palette-error-300: nth($palette-error, 4);
+$palette-error-400: nth($palette-error, 5);
+$palette-error-500: nth($palette-error, 6);
+$palette-error-600: nth($palette-error, 7);
+$palette-error-700: nth($palette-error, 8);
+$palette-error-800: nth($palette-error, 9);
+$palette-error-900: nth($palette-error, 10);
+$palette-error-A100: nth($palette-error, 11);
+$palette-error-A200: nth($palette-error, 12);
+$palette-error-A400: nth($palette-error, 13);
+$palette-error-A700: nth($palette-error, 14);
+$palette-ok:
+        rgb(237, 245, 234)
+        rgb(210, 229, 202)
+        rgb(181, 212, 167)
+        rgb(151, 194, 132)
+        rgb(128, 181, 105)
+        rgb(106, 168, 79)
+        rgb(98, 160, 72)
+        rgb(87, 151, 63)
+        rgb(77, 141, 54)
+        rgb(60, 125, 38)
+        rgb(205, 255, 190)
+        rgb(166, 255, 139)
+        rgb(127, 255, 88)
+        rgb(108, 255, 63)
+;
+
+$palette-ok-50: nth($palette-ok, 1);
+$palette-ok-100: nth($palette-ok, 2);
+$palette-ok-200: nth($palette-ok, 3);
+$palette-ok-300: nth($palette-ok, 4);
+$palette-ok-400: nth($palette-ok, 5);
+$palette-ok-500: nth($palette-ok, 6);
+$palette-ok-600: nth($palette-ok, 7);
+$palette-ok-700: nth($palette-ok, 8);
+$palette-ok-800: nth($palette-ok, 9);
+$palette-ok-900: nth($palette-ok, 10);
+$palette-ok-A100: nth($palette-ok, 11);
+$palette-ok-A200: nth($palette-ok, 12);
+$palette-ok-A400: nth($palette-ok, 13);
+$palette-ok-A700: nth($palette-ok, 14);
+
+$palette-dark:
+        rgb(228, 228, 228)
+        rgb(188, 188, 188)
+        rgb(144, 144, 144)
+        rgb(100, 100, 100)
+        rgb(66, 66, 66)
+        rgb(33, 33, 33)
+        rgb(29, 29, 29)
+        rgb(24, 24, 24)
+        rgb(20, 20, 20)
+        rgb(11, 11, 11)
+        rgb(231, 108, 108)
+        rgb(224, 64, 64)
+        rgb(236, 0, 0)
+        rgb(211, 0, 0)
+;
+
+$palette-dark-50: nth($palette-dark, 1);
+$palette-dark-100: nth($palette-dark, 2);
+$palette-dark-200: nth($palette-dark, 3);
+$palette-dark-300: nth($palette-dark, 4);
+$palette-dark-400: nth($palette-dark, 5);
+$palette-dark-500: nth($palette-dark, 6);
+$palette-dark-600: nth($palette-dark, 7);
+$palette-dark-700: nth($palette-dark, 8);
+$palette-dark-800: nth($palette-dark, 9);
+$palette-dark-900: nth($palette-dark, 10);
+$palette-dark-A100: nth($palette-dark, 11);
+$palette-dark-A200: nth($palette-dark, 12);
+$palette-dark-A400: nth($palette-dark, 13);
+$palette-dark-A700: nth($palette-dark, 14);
+
+$sans-serif: "Comfortaa", sans-serif;
+$title-sans-serif: "Ubuntu", sans-serif;
+
+
+@mixin tablet() {
+  @media (max-width: 1199px) {
+    @content
+  }
+}
+
+@mixin mobile() {
+  @media (max-width: 619px) {
+    @content
+  }
+}
+
+
+@mixin input() {
+  padding: 8px;
+  border-radius: 0.25rem;
+
+  // Themes
+  border: 1px solid rgba(#888888, 0.25);
+  background-color: rgba(#888888, 0.05);
+}
+
+@mixin button() {
+  height: 32px;
+  line-height: 32px;
+  padding: 0 16px;
+  text-align: center;
+
+  border: 1px solid rgba(#888888, 0.25);
+  border-radius: 2px;
+
+  // Themes
+  color: $palette-main-500;
+
+  &:hover {
+    background-color: rgba(#888888, 0.025);
+  }
+
+  &:active {
+    color: $palette-main-900;
+    transform: translate(1px, 1px);
+    box-shadow: -1px -1px 0 0 rgba(#888888, 0.25);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}

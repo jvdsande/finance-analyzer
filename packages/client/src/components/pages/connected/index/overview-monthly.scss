@@ -1,0 +1,77 @@
+@import "~style/_variables";
+
+.overview-monthly {
+  height: calc(100% - 2rem);
+  overflow: auto;
+  text-align: left;
+
+  padding: 1rem 2rem 2rem;
+  font-size: 0.9rem;
+
+  &__months {
+    background-color: white;
+    border: 1px solid rgba(black, 0.05);
+    position: relative;
+
+    &:before {
+      content: ' ';
+      position: sticky;
+      background-color: #FAFAFA;
+
+      width: calc(100% + 2px);
+      height: 1rem;
+
+      display: block;
+      top: -1rem;
+      margin-top: -1rem;
+      margin-left: -1px;
+    }
+  }
+
+  &__month {
+    display: flex;
+    border-bottom: 1px solid rgba(black, 0.05);
+    background-color: white;
+
+    > * {
+      flex: 1;
+      padding: 1rem;
+      text-align: right;
+    }
+
+    &--header {
+      position: sticky;
+      top: 0;
+      border-top: 1px solid rgba(black, 0.05);
+
+      > * {
+        font-weight: 600;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+    }
+
+    &:nth-child(2n) {
+      background-color: rgba($palette-main-50, 0.3);
+    }
+  }
+
+  &__name {
+    text-align: left;
+  }
+
+  &__graph {
+    text-align: center;
+    flex: 0.25;
+
+    svg {
+      margin-bottom: -0.1rem;
+    }
+
+    &:hover {
+      background-color: rgba(black, 0.03);
+    }
+  }
+}
