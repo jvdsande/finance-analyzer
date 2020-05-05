@@ -40,7 +40,7 @@ const OverviewWeekly = () => (
       </div>
       {
         state.operations.weeks.map((week) => (
-          <div className={cx('__week')}>
+          <div key={week.date.valueOf()} className={cx('__week')}>
             <div className={cx('__name')}>
               {moment(week.date).format('DD/MM/YY')}
               {' - '}

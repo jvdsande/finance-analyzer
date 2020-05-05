@@ -55,7 +55,7 @@ const OverviewMonthly = () => (
       </div>
       {
         state.operations.months.map((month) => (
-          <div className={cx('__month')}>
+          <div key={month.date.valueOf()} className={cx('__month')}>
             <div className={cx('__name')}>
               {moment(month.date).format('MMMM')}
             </div>

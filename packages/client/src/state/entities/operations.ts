@@ -126,27 +126,31 @@ export default class StateOperations {
         this.operations = operations as any[]
       })
 
-      reaction(() => this.year, () => {
+      let prevYear : string|null = null
+
+      reaction(() => [this.year, this.lastOperationDate], () => {
         this.months = [...Array(12).keys()]
           .map((month) => new StateMonth(month, this.year))
         this.weeks = [...Array(52).keys()]
           .map((week) => new StateWeek(week, this.year))
-        this.days = [...Array(
-          moment(this.year).isSame(moment(), 'year')
-            ? moment().dayOfYear() : 365,
-        ).keys()]
-          .map((day) => new StateDay(moment(this.year).dayOfYear(day)))
 
-        Client.unsubscribe('operation-updated', this.updateDays)
-        Client.unsubscribe('operation-updated', this.updateWeeks)
-        Client.unsubscribe('operation-updated', this.updateMonths)
-        Client.subscribe('operation-updated', this.updateDays)
-        Client.subscribe('operation-updated', this.updateWeeks)
-        Client.subscribe('operation-updated', this.updateMonths)
+        if(prevYear !== this.year.toISOString()) {
+          this.loadingDays = true
+          this.loadingWeeks = true
+          this.loadingMonths = true
 
-        this.loadingDays = true
-        this.loadingWeeks = true
-        this.loadingMonths = true
+          prevYear = this.year.toISOString()
+        }
+
+        this.days = [...Array(moment(this.lastOperationDate).dayOfYear()).keys()]
+          .map((day) => new StateDay(moment(this.year).dayOfYear(day + 1)))
+
+        Client.unsubscribe('Operation-updated', this.updateDays)
+        Client.unsubscribe('Operation-updated', this.updateWeeks)
+        Client.unsubscribe('Operation-updated', this.updateMonths)
+        Client.subscribe('Operation-updated', this.updateDays)
+        Client.subscribe('Operation-updated', this.updateWeeks)
+        Client.subscribe('Operation-updated', this.updateMonths)
 
         this.updateDays()
         this.updateWeeks()
@@ -165,6 +169,12 @@ export default class StateOperations {
     })
   }
 
+  @computed get lastOperationDate() {
+    // Find last operation
+    const lastOperation = this.operations.slice().sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf())
+    return (lastOperation[0] || { date: this.year.toISOString() }).date
+  }
+
   @observable loadingDays = false
 
   @action.bound updateDays() {
@@ -178,17 +188,12 @@ export default class StateOperations {
         yearlyCumulativeGain: true,
       }))
 
-    const runTimeout = setTimeout(() => {
-      this.loadingDays = true
-    }, 200)
-
     Client.builder.combineQueries(queries)
       .then((daysValue) => {
         runInAction(() => {
           daysValue.forEach((value, i) => {
             this.days[i].value = value as DailyAnalysis
           })
-          clearTimeout(runTimeout)
           this.loadingDays = false
         })
       })
@@ -211,17 +216,12 @@ export default class StateOperations {
         yearlyCumulativeGain: true,
       }))
 
-    const runTimeout = setTimeout(() => {
-      this.loadingWeeks = true
-    }, 500)
-
     Client.builder.combineQueries(queries)
       .then((weeksValue) => {
         runInAction(() => {
           weeksValue.forEach((value, i) => {
             this.weeks[i].value = value as WeeklyAnalysis
           })
-          clearTimeout(runTimeout)
           this.loadingWeeks = false
         })
       })
@@ -288,17 +288,12 @@ export default class StateOperations {
         },
       }))
 
-    const runTimeout = setTimeout(() => {
-      this.loadingMonths = true
-    }, 500)
-
     Client.builder.combineQueries(queries)
       .then((monthsValue) => {
         runInAction(() => {
           monthsValue.forEach((value, i) => {
             this.months[i].value = value as MonthlyAnalysis
           })
-          clearTimeout(runTimeout)
           this.loadingMonths = false
         })
       })

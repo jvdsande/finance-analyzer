@@ -2,9 +2,9 @@ import Client, { Accessor } from '@harmonyjs/query'
 
 import Configuration from 'configuration'
 
-export const AccountAccessor = Accessor('account')
-export const OperationAccessor = Accessor('operation')
-export const CategoryAccessor = Accessor('category')
+export const AccountAccessor = Accessor('Account')
+export const OperationAccessor = Accessor('Operation')
+export const CategoryAccessor = Accessor('Category')
 
 export function ConfigureClient({ token } : { token: string|null }) {
   return Client.configure({
