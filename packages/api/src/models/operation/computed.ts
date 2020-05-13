@@ -195,9 +195,9 @@ export default <Computed> {
         yearlyCumulativeGain: Types.Float,
       },
       async resolve({ args, resolvers: { Account, Operation }, context }) {
-        const upperBound = moment(args.week).tz('Europe/Paris').endOf('week')
+        const upperBound = moment(args.week).tz('Europe/Paris').endOf('isoWeek')
         const lowerBound = moment(args.week).tz('Europe/Paris').startOf('year')
-        const weekBound = moment(args.week).tz('Europe/Paris').startOf('week')
+        const weekBound = moment(args.week).tz('Europe/Paris').startOf('isoWeek')
 
         const account : any = await Account.read({ filter: { _id: context.authentication.get().account } })
         const operations : any[] = await Operation.readMany({
