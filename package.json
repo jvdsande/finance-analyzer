@@ -22,7 +22,7 @@
     "@nivo/line": "^0.61.1",
     "@nivo/pie": "^0.61.1",
     "aes256": "^1.0.4",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "classnames-prefix": "0.0.4",
     "destyle.css": "^1.0.11",
     "docusaurus-plugin-sass": "^0.1.8",
